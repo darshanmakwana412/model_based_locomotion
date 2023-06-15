@@ -217,7 +217,6 @@ class LocomotionGymEnv(gym.Env):
       self._world_dict = {
           "ground": self._pybullet_client.loadURDF("plane_implicit.urdf")
       }
-      pybullet.changeDynamics(self._world_dict["ground"], -1, lateralFriction=0.7)
 
       # Rebuild the robot
       self._robot = self._robot_class(
