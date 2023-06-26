@@ -30,7 +30,8 @@ def build_regular_env(robot_class,
                       enable_rendering=False,
                       on_rack=False,
                       action_limit=(0.75, 0.75, 0.75),
-                      wrap_trajectory_generator=True):
+                      wrap_trajectory_generator=True,
+                      lateralFriction=1.0):
 
   sim_params = locomotion_gym_config.SimulationParameters()
   sim_params.enable_rendering = enable_rendering
@@ -56,7 +57,8 @@ def build_regular_env(robot_class,
   env = locomotion_gym_env.LocomotionGymEnv(gym_config=gym_config,
                                             robot_class=robot_class,
                                             robot_sensors=sensors,
-                                            task=task)
+                                            task=task,
+                                            lateralFriction=lateralFriction)
 
   env = obs_dict_to_array_wrapper.ObservationDictionaryToArrayWrapper(
       env)

@@ -45,7 +45,9 @@ class LocomotionGymEnv(gym.Env):
                env_sensors=None,
                robot_sensors=None,
                task=None,
-               env_randomizers=None):
+               env_randomizers=None,
+               lateralFriction=1.0
+               ):
     """Initializes the locomotion gym environment.
 
     Args:
@@ -76,6 +78,7 @@ class LocomotionGymEnv(gym.Env):
 
     # A dictionary containing the objects in the world other than the robot.
     self._world_dict = {}
+    self._lateralFriction = lateralFriction
     self._task = task
 
     self._env_randomizers = env_randomizers if env_randomizers else []
@@ -217,6 +220,9 @@ class LocomotionGymEnv(gym.Env):
       self._world_dict = {
           "ground": self._pybullet_client.loadURDF("plane_implicit.urdf")
       }
+
+      # Set lateral friction to 0.7
+      pybullet.changeDynamics(self._world_dict["ground"], -1, lateralFriction=self._lateralFriction)
 
       # Rebuild the robot
       self._robot = self._robot_class(

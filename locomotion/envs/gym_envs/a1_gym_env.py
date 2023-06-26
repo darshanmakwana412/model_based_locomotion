@@ -13,13 +13,15 @@ class A1GymEnv(gym.Env):
   def __init__(self,
                action_limit=(0.75, 0.75, 0.75),
                render=False,
-               on_rack=False):
+               on_rack=False,
+               lateralFriction=1.0):
     self._env = env_builder.build_regular_env(
         a1.A1,
         motor_control_mode=robot_config.MotorControlMode.POSITION,
         enable_rendering=render,
         action_limit=action_limit,
-        on_rack=on_rack)
+        on_rack=on_rack,
+        lateralFriction=lateralFriction)
     self.observation_space = self._env.observation_space
     self.action_space = self._env.action_space
 
