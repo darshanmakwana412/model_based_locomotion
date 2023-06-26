@@ -15,4 +15,4 @@ action = np.array([
                 0, # Bottom left Knee
             ])
 
-np.save("action.npy", action)
+np.save("./action.npy", action)

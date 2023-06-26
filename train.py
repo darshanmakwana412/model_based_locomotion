@@ -11,9 +11,9 @@ if not os.path.exists("./logs"):
 # Init the NN dynamics model
 dynamics_function = Dynamics(
     n_in=31,
-    n_hidden=25,
+    n_hidden=30,
     n_out=19,
-    depth=20
+    depth=10
 )
 
 # Create the robot environment
@@ -28,8 +28,8 @@ loss_history = train_dynamics(
     env=env,
     optimizer=optimizer,
     num_episodes=100,
-    len_episode=1000,
-    device="cuda",
+    len_episode=100,
+    device="cpu",
     pred_delta=True,      # True for predicting the change in state(pred_st_1 - st_1), False for predicting next state(pred_st_1),
     outpur_dir="./logs"  # directory for saving model after every 10 episodes
 )
