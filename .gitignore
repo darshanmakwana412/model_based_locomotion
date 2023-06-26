@@ -1,6 +1,5 @@
-artifacts
-literature
 logs
+mbrl-lib
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
