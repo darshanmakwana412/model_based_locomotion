@@ -1,0 +1,10 @@
+simExtRemoteApiStart(19997)
+
+if (sim_call_type==sim_childscriptcall_initialization) then
+
+end
+
+if (sim_call_type==sim_childscriptcall_sensing) then
+    local simTime=simGetSimulationTime()
+    simSetFloatSignal("sim_time",simTime)
+end

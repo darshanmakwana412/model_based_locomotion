@@ -56,4 +56,4 @@ class SimpleForwardTask(object):
   def reward(self, env):
     """Get the reward without side effects."""
     del env
-    return (self.current_base_pos[0] - self.last_base_pos[0]) - 0.1 * abs(self.current_base_pos[1] - self.last_base_pos[1])
+    return (self.current_base_pos[0] - self.last_base_pos[0])
